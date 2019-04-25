@@ -28,7 +28,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include
 
 find_package(Boost REQUIRED filesystem)
 include_directories(${Boost_INCLUDE_DIRS})
-
+link_directories(${Boost_LIBRARY_DIRS})
 ogitor_add_library(OFS SHARED ${OFS_SOURCE} ${OFS_HEADERS})
 target_link_libraries(OFS ${Boost_LIBRARIES})
 

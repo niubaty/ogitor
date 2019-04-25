@@ -13,7 +13,9 @@ set(OgreOfsPlugin_srcs
 	./src/OfsFileSystem.cpp
 	./src/Plugin.cpp
 )
-
+find_package(Boost REQUIRED)
+include_directories(${Boost_INCLUDE_DIRS})
+link_directories(${Boost_LIBRARY_DIRS})
 ogitor_add_library(OgreOfsPlugin SHARED ${OgreOfsPlugin_hdrs} ${OgreOfsPlugin_srcs})
 set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR}/lib)
 

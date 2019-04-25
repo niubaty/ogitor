@@ -136,6 +136,10 @@ set(Ogitor_srcs
 	${CMAKE_BINARY_DIR}/Ogitor/src/OgitorsGlobals.cpp	
 )
 
+find_package(Boost REQUIRED regex)
+include_directories(${Boost_INCLUDE_DIRS})
+link_directories(${Boost_LIBRARY_DIRS})
+
 #add_library(Ogitor SHARED ${Ogitor_hdrs} ${Ogitor_srcs})
 ogitor_add_library(Ogitor SHARED ${Ogitor_hdrs} ${Ogitor_srcs})
 set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR}/lib)
@@ -151,7 +155,7 @@ message(STATUS "INFO OGITOR PREPROCESSOR: " ${OGITOR_PREPROCESSOR})
 
 message(STATUS ${OGRE_LIBRARY})
 
-find_package(Boost REQUIRED regex)
+
 target_link_libraries(Ogitor ${OGRE_LIBRARIES} OFS OgreTerrainConverter ${Boost_LIBRARIES} PagedGeometry)
 
 # specify a precompiled header to use

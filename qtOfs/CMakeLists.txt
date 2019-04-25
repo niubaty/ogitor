@@ -41,8 +41,10 @@ else(NOT Qt5Widgets_FOUND)
 	# if we don't include this CMake will not include ui headers properly:
 	include_directories(${CMAKE_CURRENT_BINARY_DIR})
 	include_directories(./include)
-    include_directories("${CMAKE_CURRENT_SOURCE_DIR}/../Dependencies/OFS/include")
-
+	include_directories("${CMAKE_CURRENT_SOURCE_DIR}/../Dependencies/OFS/include")
+	find_package(Boost REQUIRED)
+	include_directories(${Boost_INCLUDE_DIRS})
+	link_directories(${Boost_LIBRARY_DIRS})
 	qt5_add_resources(RESOURCE_SRCS ./res/qtOfs.qrc)
 	source_group("Qrc Files" FILES ${RESOURCE_SRCS})
 

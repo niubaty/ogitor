@@ -42,6 +42,10 @@ else(NOT Qt5Widgets_FOUND)
 		ZoneListWidget.cpp
 		exportzonedialog.cpp
 		portalsizedialog.cpp
+		${CMAKE_SOURCE_DIR}/Ogitor/src/tinystr.cpp
+		${CMAKE_SOURCE_DIR}/Ogitor/src/tinyxml.cpp
+		${CMAKE_SOURCE_DIR}/Ogitor/src/tinyxmlerror.cpp
+		${CMAKE_SOURCE_DIR}/Ogitor/src/tinyxmlparser.cpp
 	)
 
 	set(MOC_SRCS2
@@ -76,7 +80,9 @@ else(NOT Qt5Widgets_FOUND)
 	include_directories(.)
 	link_directories(${OGITOR_LIBPATH})
 	link_directories(${DEPENDENCIES_LIBPATH})
-
+	find_package(Boost REQUIRED)
+	include_directories(${Boost_INCLUDE_DIRS})
+	link_directories(${Boost_LIBRARY_DIRS})
 	link_libraries(${QT_QTMAIN_LIBRARY} ${QT_LIBRARIES} ${OGRE_LIBRARIES} Ogitor)
 	ogitor_add_library(OgModularZone SHARED ${SRCS})
 	set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR}/lib)

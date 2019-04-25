@@ -62,6 +62,9 @@ else(NOT Qt5Widgets_FOUND)
     include_directories(../OFS/include)
 
     link_libraries(${QT_QTMAIN_LIBRARY} ${QT_LIBRARIES} OFS Ogitor)
+    find_package(Boost REQUIRED)
+    include_directories(${Boost_INCLUDE_DIRS})
+    link_directories(${Boost_LIBRARY_DIRS})
     ogitor_add_library(GenericTextEditor SHARED ${SRCS})
     set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR}/lib)
 	

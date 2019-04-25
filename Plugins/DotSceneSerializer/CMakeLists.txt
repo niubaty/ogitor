@@ -11,6 +11,10 @@ set(HEADER_FILES
 set(SOURCE_FILES
 	DotSceneSerializer.cpp
 	DotSceneSerializerExport.cpp
+	${CMAKE_SOURCE_DIR}/Ogitor/src/tinystr.cpp
+	${CMAKE_SOURCE_DIR}/Ogitor/src/tinyxml.cpp
+	${CMAKE_SOURCE_DIR}/Ogitor/src/tinyxmlerror.cpp
+	${CMAKE_SOURCE_DIR}/Ogitor/src/tinyxmlparser.cpp
 )
 
 set(DotSceneSerializer_VERSION 0)
@@ -25,8 +29,10 @@ message(STATUS "${OGITOR_INCLUDES}")
 
 include_directories(.)
 link_directories(${OGITOR_LIBPATH})
+find_package(Boost REQUIRED)
 link_directories(${DEPENDENCIES_LIBPATH})
-
+include_directories(${Boost_INCLUDE_DIRS})
+link_directories(${Boost_LIBRARY_DIRS})
 link_libraries(${OGRE_LIBRARIES} Ogitor)
 ogitor_add_library(DotSceneSerializer SHARED ${HEADER_FILES} ${SOURCE_FILES})
 #target_link_libraries(OgreMain Ogitor)

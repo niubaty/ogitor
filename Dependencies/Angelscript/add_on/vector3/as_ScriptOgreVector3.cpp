@@ -50,17 +50,20 @@
 
     static void DestructVector2(Ogre::Vector2 *thisPointer)
     {
-	    thisPointer->~Vector2();
+	    //thisPointer->~Vector2();
+		delete thisPointer;
     }
 
     static void DestructVector3(Ogre::Vector3 *thisPointer)
     {
-	    thisPointer->~Vector3();
+	    //thisPointer->~Vector3();
+		delete thisPointer;
     }
 
     static void DestructVector4(Ogre::Vector4 *thisPointer)
     {
-	    thisPointer->~Vector4();
+	    //thisPointer->~Vector4();
+		delete thisPointer;
     }
 
     static Ogre::Vector2 &Vector2Assignment(Ogre::Vector2 *other, Ogre::Vector2 *self)

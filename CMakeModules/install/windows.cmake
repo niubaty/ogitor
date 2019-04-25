@@ -26,10 +26,10 @@ install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/Ogitor/include
 	CONFIGURATIONS Debug Release RelWithDebInfo MinSizeRel
 )
 # SDK : Dependencies libs
-install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Dependencies/lib
-	DESTINATION ${PREFIX}/sdk/dependencies
-	CONFIGURATIONS Debug Release RelWithDebInfo MinSizeRel
-)
+#install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Dependencies/lib
+#	DESTINATION ${PREFIX}/sdk/dependencies
+#	CONFIGURATIONS Debug Release RelWithDebInfo MinSizeRel
+#)
 # SDK: OFS headers
 FILE(GLOB ofs_headers "${CMAKE_CURRENT_SOURCE_DIR}/Dependencies/OFS/include/*.h")
 install(FILES ${ofs_headers}
@@ -55,14 +55,14 @@ install(FILES ${GenericTextEditor_headers}
 	CONFIGURATIONS Debug Release RelWithDebInfo MinSizeRel
 )
 # SDK: Hydrax headers
-install(DIRECTORY ${CMAKE_BINARY_DIR}/Dependencies/src/Hydrax
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/Plugins/OgHydrax
 	DESTINATION ${PREFIX}/sdk/dependencies/include
 	CONFIGURATIONS Debug Release RelWithDebInfo MinSizeRel
 	PATTERN "*.cpp" EXCLUDE
 	PATTERN "CMakeLists.txt" EXCLUDE
 )
 # SDK: SkyX headers
-install(DIRECTORY ${CMAKE_BINARY_DIR}/Dependencies/src/SkyX
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/Plugins/OgSkyX
 	DESTINATION ${PREFIX}/sdk/dependencies/include
 	CONFIGURATIONS Debug Release RelWithDebInfo MinSizeRel
 	PATTERN "*.cpp" EXCLUDE
@@ -121,15 +121,15 @@ if(EXISTS ${OGRE_RenderSystem_GL_REL})
 else()
     set(OGRE_COMMENT_RENDERSYSTEM_GL_REL "#")
 endif()
-install(FILES ${OGRE_PLUGIN_DIR_REL}/OgreMain.dll
-    ${OGRE_Plugin_OctreeSceneManager_REL}
-    ${OGRE_PLUGIN_DIR_REL}/cg.dll
-    ${OGRE_Plugin_CgProgramManager_REL}
-    ${OGRE_Plugin_ParticleFX_REL}
-    ${OGRE_Terrain_BINARY_REL}
-    ${OGRE_Paging_BINARY_REL}
-    DESTINATION bin
-    CONFIGURATIONS Release RelWithDebInfo MinSizeRel)
+#install(FILES ${OGRE_PLUGIN_DIR_REL}/OgreMain.dll
+#    ${OGRE_Plugin_OctreeSceneManager_REL}
+#    ${OGRE_PLUGIN_DIR_REL}/cg.dll
+#    ${OGRE_Plugin_CgProgramManager_REL}
+#    ${OGRE_Plugin_ParticleFX_REL}
+#    ${OGRE_Terrain_BINARY_REL}
+#    ${OGRE_Paging_BINARY_REL}
+#    DESTINATION bin
+#    CONFIGURATIONS Release RelWithDebInfo MinSizeRel)
 
 if(EXISTS ${OGRE_Overlay_BINARY_DBG})
     install(FILES ${OGRE_Overlay_BINARY_DBG} DESTINATION bin CONFIGURATIONS Debug)
@@ -150,15 +150,15 @@ if(EXISTS ${OGRE_RenderSystem_GL_DBG})
 else()
     set(OGRE_COMMENT_RENDERSYSTEM_GL_DBG "#")
 endif()
-install(FILES ${OGRE_PLUGIN_DIR_DBG}/OgreMain_d.dll
-    ${OGRE_Plugin_OctreeSceneManager_DBG}
-    ${OGRE_PLUGIN_DIR_DBG}/cg.dll
-    ${OGRE_Plugin_CgProgramManager_DBG}
-    ${OGRE_Plugin_ParticleFX_DBG}
-    ${OGRE_Terrain_BINARY_DBG}
-    ${OGRE_Paging_BINARY_DBG}
-    DESTINATION bin
-    CONFIGURATIONS Debug)
+#install(FILES ${OGRE_PLUGIN_DIR_DBG}/OgreMain_d.dll
+#    ${OGRE_Plugin_OctreeSceneManager_DBG}
+#    ${OGRE_PLUGIN_DIR_DBG}/cg.dll
+#    ${OGRE_Plugin_CgProgramManager_DBG}
+#    ${OGRE_Plugin_ParticleFX_DBG}
+#    ${OGRE_Terrain_BINARY_DBG}
+#    ${OGRE_Paging_BINARY_DBG}
+#    DESTINATION bin
+#    CONFIGURATIONS Debug)
 
 # Qt5 DLLs
 file(TO_CMAKE_PATH $ENV{QTDIR} QTDIR) 

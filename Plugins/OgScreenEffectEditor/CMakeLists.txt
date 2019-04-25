@@ -28,6 +28,10 @@ else(NOT Qt5Widgets_FOUND)
 		screeneffectview.cpp
 		ScreenEffectEditor.cpp
 		Plugin.cpp
+		${CMAKE_SOURCE_DIR}/Ogitor/src/tinystr.cpp
+		${CMAKE_SOURCE_DIR}/Ogitor/src/tinyxml.cpp
+		${CMAKE_SOURCE_DIR}/Ogitor/src/tinyxmlerror.cpp
+		${CMAKE_SOURCE_DIR}/Ogitor/src/tinyxmlparser.cpp
 	)
 
 	set(MOC_SRCS2

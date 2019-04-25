@@ -105,6 +105,10 @@ else(NOT Qt5Widgets_FOUND)
         ./src/uiterrainsquare.cpp
         ./include/userdefined.hxx
         ./src/userdefined.cpp
+	${CMAKE_SOURCE_DIR}/Ogitor/src/tinystr.cpp
+	${CMAKE_SOURCE_DIR}/Ogitor/src/tinyxml.cpp
+	${CMAKE_SOURCE_DIR}/Ogitor/src/tinyxmlerror.cpp
+	${CMAKE_SOURCE_DIR}/Ogitor/src/tinyxmlparser.cpp
     )
 
     SET(MOC_SRCS2
@@ -189,7 +193,9 @@ else(NOT Qt5Widgets_FOUND)
     include_directories(../Ogitor/include
         ./QtPropertyBrowser/src
     )
-
+    find_package(Boost REQUIRED)
+    include_directories(${Boost_INCLUDE_DIRS})
+    link_directories(${Boost_LIBRARY_DIRS})
     #if(WIN32)
         file(GLOB qtOgitor_res ./res/*.rc)
     #endif(WIN32)
